@@ -307,7 +307,7 @@ public class SettingsActivity extends FragmentActivity
                     return LineageUtils.isPackageEnabled(getActivity(), SUGGESTIONS_PACKAGE);
 
                 case CTS_KEY:
-                    if (!AssistUtils.newInstance(getContext()).isContextualSearchIntentAvailable()) {
+                    if (!AssistUtils.newInstance(getContext()).checkCtsSystemFeature() || !AssistUtils.newInstance(getContext()).isContextualSearchIntentAvailable()) {
                         return false;
                     }
                     mCtsEnabled = LauncherPrefs.getPrefs(mContext).getBoolean(CTS_KEY, mContextualSearchDefValue);
